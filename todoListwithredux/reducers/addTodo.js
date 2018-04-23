@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux'
-
+let timer;
 function handleAddTodo(state = {input:'',content:[]},action) {
     let newState;
-    let timer;
+
     switch (action.type){
         case 'ADD_TODO':
            
@@ -34,13 +34,13 @@ function handleAddTodo(state = {input:'',content:[]},action) {
             return newState
         case 'REQUEST':
             console.log('start Time')
-            timer=setInterval(()=>{console.log(1)},100)
+            timer=setInterval(()=>{console.log(1)},100) //这个timer要放在handleAddTodo外面，因为这个reducer每次都执行一次
+
             return state;
         case 'SUCCESS':
 
             console.log('success')
             clearInterval(timer);
-
             newState=JSON.parse(JSON.stringify(state))
             newState.content.push({value:action.data.data.data[0].content,id:action.id});
             return newState;
