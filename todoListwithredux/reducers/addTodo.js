@@ -34,7 +34,7 @@ function handleAddTodo(state = {input:'',content:[]},action) {
             return newState
         case 'REQUEST':
             console.log('start Time')
-            // timer=setInterval(()=>{console.log(1)},100)
+            timer=setInterval(()=>{console.log(1)},100)
             return state;
         case 'SUCCESS':
 
