@@ -40,6 +40,7 @@ function handleAddTodo(state = {input:'',content:[]},action) {
 
             console.log('success')
             clearInterval(timer);
+
             newState=JSON.parse(JSON.stringify(state))
             newState.content.push({value:action.data.data.data[0].content,id:action.id});
             return newState;
