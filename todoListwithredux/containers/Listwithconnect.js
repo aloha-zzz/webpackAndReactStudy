@@ -4,7 +4,7 @@ import {deleteTask} from "../actions/action";
 
 function mapStateToProps(state) {
     return{
-        value:state
+        content:state.a.content
     }
 }
 

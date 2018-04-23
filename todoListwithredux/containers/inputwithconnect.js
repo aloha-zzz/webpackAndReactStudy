@@ -1,7 +1,11 @@
 import {connect} from 'react-redux';
-import {addTodo} from './../actions/action'
+import {addTodo,saveInfo,async,changeColor} from './../actions/action'
+import defaultFunc from './../actions/action'
 import Input from './../components/input';
-import {saveInfo} from './../actions/action';
+import axios from 'axios'
+
+
+
 
 function mapDispatchToProps(dispatch) {
     return{
@@ -10,13 +14,21 @@ function mapDispatchToProps(dispatch) {
         },
         inputChange:(e)=>{
             dispatch(saveInfo(e.target.value));
-
+        },
+        async:()=>{
+            dispatch(defaultFunc.fetchInfo())
+        },
+        changeColor:()=>{
+            dispatch(changeColor())
         }
     }
 }
+
 function mapStateToProps(state) {
     return{
-        value:state
+        input: state.a.input,
+        time: state.b.time,
+        color: state.b.color,
     }
 }
 

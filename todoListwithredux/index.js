@@ -1,12 +1,17 @@
 import React from 'react'
 import App from './components/App';
 import ReactDom from 'react-dom';
-import {createStore} from 'redux';
-import handleAddTodo from './reducers/addTodo'
+import {createStore,applyMiddleware} from 'redux';
+import Reducers from './reducers/addTodo'
 import {Provider} from 'react-redux';
+import {createLogger} from 'redux-logger';
+import thunk from 'redux-thunk'
 
-let initalState={input:'',content:[]};
-let store=createStore(handleAddTodo,initalState);
+const logger = createLogger();
+
+
+let initalState={a:{input:'',content:[]},b:{time: 0,color:'red'}};
+let store=createStore(Reducers,initalState,applyMiddleware(thunk));
 
 store.subscribe(function () {
     console.log(store.getState());
@@ -15,7 +20,7 @@ store.subscribe(function () {
 
 ReactDom.render(
     <Provider store={store}>
-    <App/>
+        <App/>
     </Provider>,
     document.getElementById('root')
 )
