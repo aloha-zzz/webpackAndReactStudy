@@ -46,7 +46,8 @@ function handleAddTodo(state = {input:'',content:[]},action) {
             return newState;
         case 'ERROR':
             clearInterval(timer);
-            console.log(action.data);
+            console.log('error');
+            console.log(action);
             return state;
             
         default:
@@ -58,9 +59,11 @@ function changeColor(state = {time: 0,color:'red'}, action){
     switch (action.type){
         case 'COLOR':
             if(state.time==0){
-                return Object.assign({},state,{time: 1, color:'green'})
+                // return Object.assign({},state,{time: 1, color:'green'})
+                return {...state,...{time:1,color:'green'}}
             }else{
-                return Object.assign({},state,{time: 0, color: 'red'})
+                // return Object.assign({},state,{time: 0, color: 'red'})
+                return {...state,...{time: 0, color: 'red'}}
             }
         default:
             return state;

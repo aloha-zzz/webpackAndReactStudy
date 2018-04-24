@@ -2,14 +2,14 @@ var webpack = require('webpack');
 
 
 module.exports = {
-    entry: "./index.js",
+    entry: ["babel-polyfill", "./index.js"],
     output: {
         filename: "./bundle.js",
         path: __dirname + "/dist",
         publicPath: "/dist"
     },
     devServer: {
-        host: '0.0.0.0',
+        host: 'localhost',
         hot: true,
         inline: true,
         historyApiFallback: true,

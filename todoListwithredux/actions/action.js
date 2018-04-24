@@ -43,7 +43,7 @@ function asyncInfoSuccess(data){
     }
 }
 
-function asyncInfoErr(data){
+function  asyncInfoErr(data){
     return {
         type: 'ERROR',
         data
@@ -54,15 +54,17 @@ function asyncInfoErr(data){
 
 export default {
     fetchInfo:()=>{
-        return (dispatch)=>{
+        return async(dispatch)=>{
             dispatch(asyncInfo());
-            return axios.get('https://cnodejs.org/api/v1/topics')
-                .then(data=>{
-                    dispatch(asyncInfoSuccess(data)) 
-                })
-                .catch(data=>{
-                    dispatch(asyncInfoErr(data))
-                })
+            let response='';
+            try {
+                response = await axios.get('https://cnodejs.org/api/v1/topics1');
+                dispatch(asyncInfoSuccess(response))
+            } catch (e) {
+                console.log(response)
+                dispatch(asyncInfoErr(response))
+            }
+
         }
       
     }

@@ -1,17 +1,19 @@
 import {connect} from 'react-redux';
-import {addTodo,saveInfo,async,changeColor} from './../actions/action'
+import {addTodo,saveInfo,changeColor} from './../actions/action'
 import defaultFunc from './../actions/action'
 import Input from './../components/input';
-import axios from 'axios'
+import {bindActionCreators} from 'redux';
+
 
 
 
 
 function mapDispatchToProps(dispatch) {
     return{
-        addTodo:()=>{
-            dispatch(addTodo());
-        },
+        // addTodo:()=>{
+        //     dispatch(addTodo());
+        // },
+        addTodo:bindActionCreators(addTodo,dispatch),
         inputChange:(e)=>{
             dispatch(saveInfo(e.target.value));
         },

@@ -14,8 +14,8 @@ let initalState={a:{input:'',content:[]},b:{time: 0,color:'red'}};
 let store=createStore(Reducers,initalState,applyMiddleware(thunk));
 
 store.subscribe(function () {
-    // console.log(store.getState());
-    // console.log('change');
+    console.log(store.getState());
+    console.log('change');
 })
 
 ReactDom.render(
